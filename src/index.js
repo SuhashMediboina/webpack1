@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux'
+import createSagaMiddleware from 'redux-saga';
+import App from './containers/App';
+import reducers from './reducers';
 
-class App extends React.Component {
-  render() {
-    return <h1>Hello Suhash!</h1>
-  }
-}
+let store = createStore(reducers);
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(
+    <Provider>
+        <App store = {store}/>
+    </Provider>
+    , document.getElementById('app')
+);
